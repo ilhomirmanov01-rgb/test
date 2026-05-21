@@ -1,4 +1,4 @@
- natija=qosh(9,6532)
+#  natija=qosh(9,6532)
 # print(natija)
 
 
@@ -39,6 +39,6 @@ text="Python is great and Python is fun. Learning Python is a great experience"
 
 
 
-sana=input(">>>")
-natija=lib.oy(sana)
-print(natija)
+# sana=input(">>>")
+# natija=lib.oy(sana)
+# print(natija)
