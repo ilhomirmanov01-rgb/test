@@ -7,7 +7,7 @@
 
 
 matn=input(">>>")
-new=[float(i) for i in matn.replace(" ",",").split(",") if not i.isalpha() and "." in i]
+new=[float(i) for i in matn.replace(" ",",").split(",") if not i.isalpha() and i.count(".")==1]
 if new:
     umumiy=sum(new)
     maximum=max(new)
