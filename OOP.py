@@ -128,13 +128,85 @@ class bino:
 # h1.vazni()
 # h1.singl()
 
-class market:
-    def __init__(self):
-        self.royxat={}
-    def addProduct(self,name,price):
-        self.royxat[name]=price
-    def removeProduct(self,name):
-        for i in self.royxat():
-            if i==name:
-                self.royxat.pop(i)
+# class market:
+#     def __init__(self):
+#         self.royxat={}
+#     def addProduct(self,name,price):
+#         self.royxat[name]=price
+#     def removeProduct(self,name):
+#         for i in self.royxat():
+#             if i==name:
+#                 self.royxat.pop(i)
 
+
+
+
+# class population:
+#     def __init__(self,name,age,jinsi):
+#         self.ism=name
+#         self.yosh=age
+#         self.jinsi=jinsi
+#     def get_info(self):
+#         print(f""" {self.ism}
+# Yoshi: {self.yosh}
+# Jinsi: {self.jinsi}""")
+# class MALE(population):
+#     def male(self):
+#         if self.yosh>=50:
+#             print(f"Janob {self.get_info}")
+
+
+
+
+    
+    
+
+
+
+# o1=population("jack",21,"MALE")
+
+
+
+class Employee:
+    def __init__(self,surname,position,salary):
+        self.familya=surname
+        self.lavozimi=position
+        self.oyligi=salary
+#     def __str__(self):
+#         return f"""Yangi ishchi: {self.familya}
+# Lavozimi:{self.lavozimi}
+# oyligi: {self.oyligi}"""
+        
+
+# ishchi=Employee("Valiyev","muhandis",8000)
+# print(ishchi)
+
+
+class EnterpriseEmployee(Employee):
+    def __init__(self,surname,position,salary,rating):
+        super().__init__(surname,position,salary)
+        self.reyting=rating
+
+    def oshirilgan_oylik(self):
+        if self.reyting>0 and self.reyting<=100:
+            if 60>self.reyting or self.reyting<75:
+                 self.oyligi=self.oyligi*1.20
+                 print(self.oyligi)
+            elif 75>self.reyting or self.reyting<90:
+                 self.oyligi=self.oyligi*1.40
+                 print(self.oyligi)
+            elif 90>self.reyting or self.reyting<100:
+                 self.oyligi=self.oyligi*1.60
+                 print(self.oyligi)
+        else:
+            print("rayting no'to'g'ri")
+        
+
+i1=EnterpriseEmployee("Valiyev","boshliq",10000,65)
+i2=EnterpriseEmployee("Valiyev","boshliq",10000,80)
+i3=EnterpriseEmployee("Valiyev","boshliq",10000,95)
+i4=EnterpriseEmployee("Valiyev","boshliq",10000,0)
+i5=EnterpriseEmployee("Valiyev","boshliq",10000,105)
+lst=[i1,i2, i3,i4,i5]
+for i in lst:
+    i.oshirilgan_oylik()
