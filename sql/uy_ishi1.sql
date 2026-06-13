@@ -32,86 +32,41 @@ INSERT INTO sales (product_name,category,price,quantity,sale_date) VALUES ('Lapt
                                                 ('Marker', 'Stationery', 4, 12, '2025-01-03'),
                                                 ('Folder', 'Stationery', 6, 8, '2025-01-04');
 
-select product_name,count(*) from sales GROUP BY product_name;  
+select category,count(*) from sales GROUP BY category;  
 
-+--------------+----------+
-| product_name | count(*) |
-+--------------+----------+
-| Laptop       |        1 |
-| Phone        |        1 |
-| TV           |        1 |
-| Headphones   |        1 |
-| Table        |        1 |
-| Chair        |        1 |
-| Sofa         |        1 |
-| Bed          |        1 |
-| T-shirt      |        1 |
-| Jeans        |        1 |
-| Jacket       |        1 |
-| Shoes        |        1 |
-| Apple        |        1 |
-| Bread        |        1 |
-| Milk         |        1 |
-| Cheese       |        1 |
-| Notebook     |        1 |
-| Pen          |        1 |
-| Marker       |        1 |
-| Folder       |        1 |
-+--------------+----------+
++-------------+----------+
+| category    | count(*) |
++-------------+----------+
+| Electronics |        4 |
+| Furniture   |        4 |
+| Clothing    |        4 |
+| Food        |        4 |
+| Stationery  |        4 |
++-------------+----------+
 
-select product_name,sum(price*quantity) from sales GROUP BY product_name;
+select category,sum(price*quantity) from sales GROUP BY category;
 
-+--------------+---------------------+
-| product_name | sum(price*quantity) |
-+--------------+---------------------+
-| Laptop       |                1600 |
-| Phone        |                1800 |
-| TV           |                 900 |
-| Headphones   |                 750 |
-| Table        |                 300 |
-| Chair        |                 400 |
-| Sofa         |                1200 |
-| Bed          |                 900 |
-| T-shirt      |                 240 |
-| Jeans        |                 210 |
-| Jacket       |                 240 |
-| Shoes        |                 360 |
-| Apple        |                  40 |
-| Bread        |                  45 |
-| Milk         |                  40 |
-| Cheese       |                  40 |
-| Notebook     |                  50 |
-| Pen          |                  50 |
-| Marker       |                  48 |
-| Folder       |                  48 |
-+--------------+---------------------+
++-------------+---------------------+
+| category    | sum(price*quantity) |
++-------------+---------------------+
+| Electronics |                5050 |
+| Furniture   |                2800 |
+| Clothing    |                1050 |
+| Food        |                 165 |
+| Stationery  |                 196 |
++-------------+---------------------+
 
-select product_name,AVG(price),sum(price)from sales GROUP BY product_name;
+select category,AVG(price),sum(price)from sales GROUP BY category;
 
-+--------------+------------+------------+
-| product_name | AVG(price) | sum(price) |
-+--------------+------------+------------+
-| Laptop       |   800.0000 |        800 |
-| Phone        |   600.0000 |        600 |
-| TV           |   900.0000 |        900 |
-| Headphones   |   150.0000 |        150 |
-| Table        |   300.0000 |        300 |
-| Chair        |   100.0000 |        100 |
-| Sofa         |  1200.0000 |       1200 |
-| Bed          |   900.0000 |        900 |
-| T-shirt      |    40.0000 |         40 |
-| Jeans        |    70.0000 |         70 |
-| Jacket       |   120.0000 |        120 |
-| Shoes        |    90.0000 |         90 |
-| Apple        |     2.0000 |          2 |
-| Bread        |     3.0000 |          3 |
-| Milk         |     4.0000 |          4 |
-| Cheese       |     8.0000 |          8 |
-| Notebook     |     5.0000 |          5 |
-| Pen          |     2.0000 |          2 |
-| Marker       |     4.0000 |          4 |
-| Folder       |     6.0000 |          6 |
-+--------------+------------+------------+
++-------------+------------+------------+
+| category    | AVG(price) | sum(price) |
++-------------+------------+------------+
+| Electronics |   612.5000 |       2450 |
+| Furniture   |   625.0000 |       2500 |
+| Clothing    |    80.0000 |        320 |
+| Food        |     4.2500 |         17 |
+| Stationery  |     4.2500 |         17 |
++-------------+------------+------------+
 
 
 
@@ -140,33 +95,25 @@ select product_name,SUM(price*quantity) from sales WHERE category = 'Electronics
 | Headphones   |                 750 |
 +--------------+---------------------+
 
-select product_name,sum(price*quantity) as sum from sales GROUP BY product_name having sum >=1000;
+select category,sum(price*quantity) as sum from sales GROUP BY category having sum >=2000;
 
-# 2000 dan kattasi Yuq ekan 1000  dan kattasini chiqardim.
 
-+--------------+------+
-| product_name | sum  |
-+--------------+------+
-| Laptop       | 1600 |
-| Phone        | 1800 |
-| Sofa         | 1200 |
-+--------------+------+
 
-select product_name,AVG(price) as avg, SUM(price)from sales GROUP BY product_name having avg >=100;
++-------------+------+
+| category    | sum  |
++-------------+------+
+| Electronics | 5050 |
+| Furniture   | 2800 |
++
 
-+--------------+-----------+------------+
-| product_name | avg       | SUM(price) |
-+--------------+-----------+------------+
-| Laptop       |  800.0000 |        800 |
-| Phone        |  600.0000 |        600 |
-| TV           |  900.0000 |        900 |
-| Headphones   |  150.0000 |        150 |
-| Table        |  300.0000 |        300 |
-| Chair        |  100.0000 |        100 |
-| Sofa         | 1200.0000 |       1200 |
-| Bed          |  900.0000 |        900 |
-| Jacket       |  120.0000 |        120 |
-+--------------+-----------+------------+
+select category,AVG(price) as avg, SUM(price)from sales GROUP BY category having avg > 100;
+
++-------------+----------+------------+
+| category    | avg      | SUM(price) |
++-------------+----------+------------+
+| Electronics | 612.5000 |       2450 |
+| Furniture   | 625.0000 |       2500 |
++-------------+----------+------------+
 
 select sum(quantity) from sales where YEAR(sale_date) = 2025 and MONTH(sale_date) = 1 and DAY(sale_date) = 1;
 
@@ -185,18 +132,14 @@ select * from sales ORDER BY quantity desc limit 1;
 +----+--------------+------------+-------+----------+------------+
 
 
-select quantity, SUM(price*quantity) from sales WHERE quantity > 3 GROUP BY quantity;
+select category, JSON_ARRAYAGG(quantity),SUM(price*quantity) from sales WHERE quantity > 3 GROUP BY category;
 
-+----------+---------------------+
-| quantity | SUM(price*quantity) |
-+----------+---------------------+
-|        5 |                 790 |
-|        4 |                 760 |
-|        6 |                 240 |
-|       20 |                  40 |
-|       15 |                  45 |
-|       10 |                  90 |
-|       25 |                  50 |
-|       12 |                  48 |
-|        8 |                  48 |
-+----------+---------------------+
++-------------+-------------------------+---------------------+
+| category    | JSON_ARRAYAGG(quantity) | SUM(price*quantity) |
++-------------+-------------------------+---------------------+
+| Clothing    | [6, 4]                  |                 600 |
+| Electronics | [5]                     |                 750 |
+| Food        | [20, 15, 10, 5]         |                 165 |
+| Furniture   | [4]                     |                 400 |
+| Stationery  | [10, 25, 12, 8]         |                 196 |
++-------------+-------------------------+---------------------+
